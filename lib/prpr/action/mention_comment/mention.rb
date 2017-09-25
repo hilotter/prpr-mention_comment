@@ -35,7 +35,12 @@ module Prpr
         end
 
         def comment
-          event.comment
+          case event
+          when Event::PullRequestReview
+            event.review
+          else
+            event.comment
+          end
         end
 
         def from
